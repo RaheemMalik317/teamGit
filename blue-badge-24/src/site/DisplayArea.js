@@ -6,6 +6,7 @@ function DisplayArea() {
     return (
         <div>
             <Weather/>
+            <Ticketmaster />
         </div>
     );
 }
