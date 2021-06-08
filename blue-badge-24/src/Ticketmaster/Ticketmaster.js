@@ -7,6 +7,7 @@ const key = '7drYHlAFPDVkMAGRvyAmhdDlCUWyZzGv'
 
 function Ticketmaster(props) {
     console.log(props);
+    const [results, setResults] = useState([])
 
 let lat=getCurrentPosition(coords.latitude)
 let lon=getCurrentPosition(coords.longitude);
@@ -36,8 +37,7 @@ let fetchMaster = () => {
 
     return (
         <div >
-            <Button onToggle={}></Button>
-        
+        <h3>Get Your Tickets NOW</h3>
         </div>
     );
 }
