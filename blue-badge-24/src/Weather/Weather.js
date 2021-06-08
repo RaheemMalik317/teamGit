@@ -6,20 +6,20 @@ const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
 const apiKey = '7a58d9b61109b78f87f3ebf6c6e68e0a';
 
 const Weather = (props) =>{
-    // console.log(props);
+    console.log(props); 
     const [results, setResults] =useState([]);
+    const [imperial, setImperial] =useState(true);
 
     const lat= localStorage.getItem('lat');
     const long = localStorage.getItem('long');
 
-    console.log(lat,long)
+    console.log(lat,long);
 
-    let apiURL = `${baseUrl}lat=${lat}&lon=${long}&appid=${apiKey}`;
+    const fetchWeather = () => {
+    let apiURL = `${baseUrl}lat=${lat}&lon=${long}&appid=${apiKey}&units=`;
+    apiUrl = imperial ? apiURL + `${imperial}` : apiURL +`${metric}`;
 
-    console.log(apiUrl);
-
-    let fetchWeather = () =>{
-        fetch(apiURL)
+    fetch(apiURL)
         .then(res => res.json())
         .then(response => setResults(response))
         .catch(err => console.log(err))
