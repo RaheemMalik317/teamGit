@@ -10,14 +10,14 @@ function Ticketmaster(props) {
     const [results, setResults] = useState([])
 
     const lat= localStorage.getItem('lat');
-    const lon = localStorage.getItem('long');
+    const long = localStorage.getItem('long');
 
-let apiUrl = `${baseUrl}lat=${lat}&lon=${lon}&appid=${key}`;
+let apiUrl = `${baseUrl}lat=${lat}&long=${long}&appid=${key}`;
 
 console.log(apiUrl);
 
 let fetchMaster = () => {
-    let apiUrl = `${baseUrl}lat=${lat}&lon=${lon}&appid=${key}`;
+    let apiUrl = `${baseUrl}lat=${lat}&long=${long}&appid=${key}`;
 
 
     fetch(apiUrl)
@@ -40,8 +40,6 @@ let fetchMaster = () => {
         <div >
 
            <h3>Get Your Tickets Here!</h3>
-        
-=======
 
         </div>
     );
