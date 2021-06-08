@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Button} from 'reactstrap'
-import TicketmasterResults from './TicketmasterResults'
+// import TicketmasterResults from './TicketmasterResults'
 
 const baseUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='
 const key = '7drYHlAFPDVkMAGRvyAmhdDlCUWyZzGv'
@@ -9,8 +9,8 @@ function Ticketmaster(props) {
     console.log(props);
     const [results, setResults] = useState([])
 
-let lat=getCurrentPosition(coords.latitude)
-let lon=getCurrentPosition(coords.longitude);
+    let lon = window.localStorage.long;
+    let lat = window.localStorage.lat;
 
 let apiUrl = `${baseUrl}lat=${lat}&lon=${lon}&appid=${key}`;
 
@@ -35,11 +35,13 @@ let fetchMaster = () => {
 
 
 
+
     return (
         <div >
-        <h3>Get Your Tickets NOW</h3>
+
         </div>
     );
+
 }
 
 export default Ticketmaster;
