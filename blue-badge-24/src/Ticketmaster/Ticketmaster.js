@@ -7,6 +7,7 @@ const key = '7drYHlAFPDVkMAGRvyAmhdDlCUWyZzGv'
 
 function Ticketmaster(props) {
     console.log(props);
+    const [results, setResults] = useState([])
 
     const lat= localStorage.getItem('lat');
     const lon = localStorage.getItem('long');
@@ -37,8 +38,11 @@ let fetchMaster = () => {
 
     return (
         <div >
+
            <h3>Get Your Tickets Here!</h3>
         
+=======
+
         </div>
     );
 
