@@ -17,7 +17,7 @@ const Weather = (props) =>{
 
     const fetchWeather = () => {
     let apiURL = `${baseUrl}lat=${lat}&lon=${long}&appid=${apiKey}&units=`;
-    apiUrl = imperial ? apiURL + `${imperial}` : apiURL +`${metric}`;
+    apiURL = imperial ? apiURL + `imperial` : apiURL +`metric`;
 
     fetch(apiURL)
         .then(res => res.json())
@@ -26,8 +26,8 @@ const Weather = (props) =>{
     }
 
     console.log(results);
-    let temp = results.main.temp;
-    console.log(temp);
+    // let temp = results.main.temp;
+    // console.log(temp);
 
     return (
         <div>
