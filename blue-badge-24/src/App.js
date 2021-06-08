@@ -13,6 +13,7 @@ function App() {
   localStorage.setItem('long', longitude);
   localStorage.setItem('lat', latitude);
   }
+  
   navigator.geolocation.getCurrentPosition(success);
 
 
