@@ -3,7 +3,7 @@ import {success} from '../App.js'
 
 function Header() {
 
-    navigator.geolocation.getCurrentPosition(success);
+    // navigator.geolocation.getCurrentPosition(success);
 
     let longitude = window.localStorage.long;
     let latitude = window.localStorage.lat;
