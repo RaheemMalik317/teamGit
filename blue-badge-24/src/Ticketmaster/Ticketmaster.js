@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "reactstrap";
-// import TicketmasterResults from './TicketmasterResults'
+// import { Button } from "reactstrap";
+ import ResultMaster from './ResultMaster'
 
 const baseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?";
 const key = "7drYHlAFPDVkMAGRvyAmhdDlCUWyZzGv";
@@ -8,10 +8,11 @@ const key = "7drYHlAFPDVkMAGRvyAmhdDlCUWyZzGv";
 function Ticketmaster(props) {
   console.log(props);
   const [results, setResults] = useState([]);
-  const [localStartDateTime, setLocalStartDateTime] = useState([]);
-  const [localStartEndDateTime, setLocalStartEndDateTime] = useState([]);
+  //const [localStartDateTime, setLocalStartDateTime] = useState([]);
+  //const [localStartEndDateTime, setLocalStartEndDateTime] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [search, setSearch] = useState("");
+ // const [text, setText] = useState()
 
   const lat = localStorage.getItem("lat");
   const long = localStorage.getItem("long");
@@ -24,15 +25,16 @@ function Ticketmaster(props) {
   let fetchResults = () => {
     let url=`${baseUrl}&latlong=${lat},${long}&radius=25&unit=miles&locale=*&size=10&page=${pageNumber}&sort=date,asc&apikey=${key}`
 
-    fetch(apiUrl)
+    fetch(url)
       .then((res) => res.json())
-      .then((data) => setResults(data.response))
+      .then((data) => setResults(data.response.docs))
       .catch((err) => console.log(err));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setPageNumber(0);
+    console.log('clicking');
     fetchResults();
   };
 
@@ -52,9 +54,25 @@ function Ticketmaster(props) {
 
   return (
     <div>
-      <h3>Get Your Tickets Here!</h3>
+      {/* <input  onChange={(e) => handleSubmit(e)} /> */}
+      <span>Get Your Tickets Here (required):</span>
+      <input type="text" name="search" onChange={(e) => setSearch(e.target.value)} required/>
+      <br />
+      <span>Start Date:</span>
+      <input type="date" name="startDate" pattern="[0-9]{8}" onChange={(e) => setLocalStartDateTime(e.target.value)}/>
+      <br />
+      <span>End Date: </span>
+      <input type="date" name="endDate" pattern="[0-9]{8}" onChange={(e) => setLocalStartEndDateTime(e.target.value)}/>
+      <br />
+      <button className="submit" onChange={(e) => handleSubmit(e)}>Let's PARTY!</button>
     </div>
-  );
+   ); 
 }
-
+  
 export default Ticketmaster;
+
+
+
+
+// if (localStartDateTime.value !== '')
+// console.log(localStartDateTime.value);
