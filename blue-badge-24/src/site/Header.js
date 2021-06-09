@@ -1,4 +1,15 @@
 import React from 'react'
+import Radium from 'radium';
+
+
+const styles = {
+    head: {
+      backgroundColor: '#8535A4',
+      padding: '25px',
+      color: 'white',
+      textAlign: 'center'
+    }
+  }
 
 function Header() {
 
@@ -18,4 +29,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default Radium(Header);

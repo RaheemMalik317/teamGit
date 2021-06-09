@@ -1,16 +1,27 @@
 import WeatherDisplay from '../Weather/WeatherDisplay';
+import Weather from '../Weather/Weather';
 import Nasa from '../Nasa/SatelliteImage';
 import Ticketmaster from '../Ticketmaster/Ticketmaster';
-import satelliteImage from '../Nasa/SatelliteImage';
+import Radium from 'radium';
+
+const styles = {
+    app: {
+      backgroundColor: '#8535A4',
+      padding: '25px',
+      display: 'flex',
+      flexDirection: 'row'
+    }
+  }
+  
 
 function DisplayArea() {
     return (
         <div>
-            <WeatherDisplay/>
+            <Weather/>
             <Ticketmaster />
             <Nasa />
         </div>
     );
 }
 
-export default DisplayArea;
+export default Radium(DisplayArea);

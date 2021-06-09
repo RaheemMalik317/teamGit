@@ -1,12 +1,20 @@
 import React, {useState} from 'react';
+import {Form} from 'reactstrap';
+import Radium from 'radium';
 
-
-// import {Form} from 'reactstrap';
 
 const baseURL = 'https://api.nasa.gov/planetary/earth/imagery';
 const apiKey = 'qLamhnDq4RdZ1cxgCt3JvDOkaS8SVcL3Cdyop7To';
+const styles = {
+    nasa: {
+      backgroundColor: '#8535A4',
+      padding: '25px',
+      textAlign: 'center'
+    }
+  }
 
 const NASA = (props) => {
+
     const [results, setResults] = useState([]);
     const[userDate, setUserDate] = useState(0);
     const lat = localStorage.getItem('lat');
@@ -38,7 +46,7 @@ let fetchImage = () => {
     //     .catch(err => console.log(err));
 
         return (
-            <div >
+            <div style={styles.nasa}>
                 <h3>You are here</h3>
             </div>
         );
@@ -47,4 +55,6 @@ let fetchImage = () => {
 }
 
 
-export default NASA;
+
+export default Radium(NASA);
+
