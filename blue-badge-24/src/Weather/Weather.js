@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 import {ListGroup, ListGroupItem, ListGroupItemHeading} from 'reactstrap';
 import Radium from 'radium';
@@ -31,48 +32,55 @@ const styles = {
 const Weather = (props) =>{
     // console.log(props); 
     const [results, setResults] =useState([]);
-    const [imperial, setImperial] =useState(true);
-
+    const [metric, setMetric] =useState(false);
     const lat= localStorage.getItem('lat');
     const long = localStorage.getItem('long');
 
-    // console.log(lat,long);
+    // let temp = "";
+    // let description = "";
+    // let secondDescription = "";
+    // let feelsLike = "";
+    // let tempMin = "";
+    // let tempMax= "";
 
     const fetchWeather = () => {
-    let apiURL = `${baseUrl}lat=${lat}&lon=${long}&appid=${apiKey}&units=`;
-    apiURL = imperial ? apiURL + `imperial` : apiURL +`metric`;
-    console.log('weather url', apiURL);
-    fetch(apiURL)
-        .then(res => res.json())
-        .then(response => setResults(response))
-        .catch(err => console.log(err))
+        let apiURL = `${baseUrl}lat=${lat}&lon=${long}&appid=${apiKey}&units=`;
+        apiURL = metric ? apiURL +`metric`: apiURL + `imperial` ;
+        console.log('weather url', apiURL);
+        fetch(apiURL)
+            .then(res => res.json())
+            .then(response => setResults(response))
+            .catch(err => console.log(err));
     }
 
-    console.log(results);
-    // let temp = results.main.temp;
-    // console.log(temp);
+    console.log('weather results', results)
+    let temp = results.main === undefined ? "unable to get data" : results.main.temp_max;
+    let description = results.weather === undefined? "unable to get data" :results.weather.main
+    let secondDescription = results.weather === undefined ? "unable to get data": results.weather.description
+    let feelsLike = results.main === undefined ? "unable to get data": results.main.feels_like
+    let tempMin = results.main === undefined ? "unable to get data": results.main.temp_min
+    let tempMax= results.main === undefined ? "unable to get data" :results.main.temp_max
 
-    let setCentigrade =()=> {
-            setImperial(false);
-            fetchWeather();
-        }
+    let tempType = metric? 'F' : 'C'
 
-    let setFahrenheit = () =>{
-            setImperial(true);
-            fetchWeather();
-    }
-
-    // have to click button twice for these to work??? need to investigate.... FF
     return (
-        <div styles={styles.weather}>
-            <ListGroupItemHeading>Current Weather</ListGroupItemHeading>
-            <ListGroup>
-                <ListGroupItem></ListGroupItem>
-                <ListGroupItem></ListGroupItem>
-                <ListGroupItem></ListGroupItem>
-            </ListGroup>
-            <button onClick={setCentigrade} style={styles.button}>Celsius</button>
-            <button onClick={setFahrenheit} style={styles.button}>Imperial</button>
+        <div>
+            <button onClick={fetchWeather}>Get Weather</button>
+            <h3>Current Weather</h3>
+            <ul style={{"listStyle": "none"}}>
+                <li>{description}</li>
+                <li>{secondDescription}</li>
+                <li>Temperature:</li>
+                <li>{temp}&deg;{tempType}</li>
+                <li>Feels Life:</li>
+                <li>{feelsLike}&deg;{tempType}</li>
+                <li>Low:</li>
+                <li>{tempMin}&deg;{tempType}</li>
+                <li>High:</li>
+                <li>{tempMax}&deg;{tempType}</li>
+            </ul>
+            <button onClick={()=>{setMetric(true); fetchWeather()}}>Celsius</button>
+            <button onClick={()=>{setMetric(false); fetchWeather()}}>Imperial</button>
         </div>
     );
 }

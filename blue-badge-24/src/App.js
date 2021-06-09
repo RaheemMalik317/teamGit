@@ -4,7 +4,6 @@ import Header from './site/Header';
 import DisplayArea from './site/DisplayArea';
 import Footer from './site/Footer';
 import Radium from 'radium';
-// import Success from './site/GetLocation';
 
 
 const styles = {
