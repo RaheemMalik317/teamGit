@@ -9,7 +9,7 @@ function App() {
   function success(position) {
   let latitude  = position.coords.latitude;
   let longitude = position.coords.longitude;
-  console.log(latitude, longitude);
+  console.log('App', latitude, longitude);
   localStorage.setItem('long', longitude);
   localStorage.setItem('lat', latitude);
   }
@@ -21,6 +21,7 @@ function App() {
     <div className="App">
       <Header/>
       <DisplayArea/>
+      <Footer/>
     </div>
   );
 }
