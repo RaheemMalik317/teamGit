@@ -1,8 +1,17 @@
 import React from 'react';
 import {Form} from 'reactstrap';
+import Radium from 'radium';
 
 const baseURL = 'https://api.nasa.gov/planetary/earth/imagery';
 const apiKey = 'ULctjVgrZvQan7OgvbRM6sm3nfsDujl6wWBjaXW4';
+
+const styles = {
+    nasa: {
+      backgroundColor: '#8535A4',
+      padding: '25px',
+      textAlign: 'center'
+    }
+  }
 
 function NASA(props) {
     const [results, setResults] = useState([]);
@@ -40,7 +49,7 @@ let satelliteImage = () => {
         console.log(results);
 
         return (
-            <div >
+            <div style={styles.nasa}>
                 <h3>You are here</h3>
                 <Form on/>
             </div>
@@ -49,4 +58,4 @@ let satelliteImage = () => {
 
 }
 
-export default satelliteImage;
+export default Radium(satelliteImage);
