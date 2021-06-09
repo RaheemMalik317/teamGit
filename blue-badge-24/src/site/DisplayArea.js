@@ -1,6 +1,6 @@
 import WeatherDisplay from '../Weather/WeatherDisplay';
 import Weather from '../Weather/Weather';
-import Nasa from '../Nasa/Nasa';
+import Nasa from '../Nasa/SatelliteImage';
 import Ticketmaster from '../Ticketmaster/Ticketmaster';
 import Radium from 'radium';
 
@@ -19,6 +19,7 @@ function DisplayArea() {
         <div>
             <Weather/>
             <Ticketmaster />
+            <Nasa />
         </div>
     );
 }
