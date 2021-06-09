@@ -30,7 +30,7 @@ function Ticketmaster(props) {
       .catch((err) => console.log(err));
   };
 
-  const hadnleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setPageNumber(0);
     fetchResults();

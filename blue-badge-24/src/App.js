@@ -3,7 +3,17 @@ import './App.css';
 import Header from './site/Header';
 import DisplayArea from './site/DisplayArea';
 import Footer from './site/Footer';
+import Radium from 'radium';
 // import Success from './site/GetLocation';
+
+
+const styles = {
+  app: {
+    backgroundColor: '#8535A4',
+    padding: '25px'
+  }
+}
+
 
 function App() {
   function success(position) {
@@ -18,7 +28,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div style={styles.app} className="App">
       <Header/>
       <DisplayArea/>
       <Footer/>
@@ -26,7 +36,7 @@ function App() {
   );
 }
 
-export default App;
+export default Radium(App);
 
 
 
