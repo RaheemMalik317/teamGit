@@ -1,52 +1,50 @@
-import React from 'react';
-import {Form} from 'reactstrap';
+import React, {useState} from 'react';
+
+
+// import {Form} from 'reactstrap';
 
 const baseURL = 'https://api.nasa.gov/planetary/earth/imagery';
-const apiKey = 'ULctjVgrZvQan7OgvbRM6sm3nfsDujl6wWBjaXW4';
+const apiKey = 'qLamhnDq4RdZ1cxgCt3JvDOkaS8SVcL3Cdyop7To';
 
-function NASA(props) {
+const NASA = (props) => {
     const [results, setResults] = useState([]);
-    cosnt[userDate, setUserDate] = useState([]);
+    const[userDate, setUserDate] = useState(0);
     const lat = localStorage.getItem('lat');
     const long = localStorage.getItem('long');
     
-
-    let Date = new Date();
-    let month = getMonth() + 1;
-    let day = getDate() + 1;
-    let year = getFullYear();
-    if (day < 10 && month < 10) {
-        day = `0` + `${day}`;
-        month = `0` + `${month}`;
-    } else if (day < 10) {
-        day = `0` + `${day}`;
-    } else if (month < 10) {
-        month = `0` + `${month}`;
-    }
-}
+    let currentDate = new setUserDate();
+    // let month = getMonth() + 1;
+    // let day = getDate() + 1;
+    // let year = getFullYear();
+    // if (day < 10 && month < 10) {
+    //     day = `0` + `${day}`;
+    //     month = `0` + `${month}`;
+    // } else if (day < 10) {
+    //     day = `0` + `${day}`;
+    // } else if (month < 10) {
+    //     month = `0` + `${month}`;
+    // }
 
 
 
 
-let satelliteImage = () => {
-    let apiUrl = `${basURL}?lat=${lat}&lon=${long}&date=${setUserDate}&api_key=ULctjVgrZvQan7OgvbRM6sm3nfsDujl6wWBjaXW4`;
 
-    fetch(apiUrl)
+let fetchImage = () => {
+    let apiUrl = `${baseURL}?lat=${lat}&lon=${long}&date=${setUserDate}&api_key=ULctjVgrZvQan7OgvbRM6sm3nfsDujl6wWBjaXW4`;
 
-        .then(res => res.json())
-        .then(data => setResults(response))
-        .catch(err => console.log(err));
-
-        console.log(results);
+    // fetch(apiUrl)
+    //     .then(res => res.json())
+    //     .then(data => setResults())
+    //     .catch(err => console.log(err));
 
         return (
             <div >
                 <h3>You are here</h3>
-                <Form on/>
             </div>
         );
 
-
+        }
 }
 
-export default satelliteImage;
+
+export default NASA;
