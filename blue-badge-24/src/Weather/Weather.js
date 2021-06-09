@@ -62,7 +62,7 @@ const Weather = (props) =>{
     let tempMin = results.main === undefined ? "unable to get data": results.main.temp_min
     let tempMax= results.main === undefined ? "unable to get data" :results.main.temp_max
 
-    let tempType = metric? 'F' : 'C'
+    let tempType = metric? 'C' : 'F'
 
     return (
         <div>
