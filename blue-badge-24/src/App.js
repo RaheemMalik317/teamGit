@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './site/Header';
 import DisplayArea from './site/DisplayArea';
-import Footer from './site/Header';
+import Footer from './site/Footer';
 // import Success from './site/GetLocation';
 
 function App() {
