@@ -1,9 +1,33 @@
-import React, {useEffect, useState} from 'react';
-import {Button, ListGroup, ListGroupItemText, ListGroupItemHeading} from 'reactstrap';
+
+import React, {useState} from 'react';
+import {ListGroup, ListGroupItem, ListGroupItemHeading} from 'reactstrap';
+import Radium from 'radium';
 
 
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
 const apiKey = '7a58d9b61109b78f87f3ebf6c6e68e0a';
+
+const styles = {
+    weather: {
+        backgroundColor: '#2F22AD',
+        color: 'white',
+        padding: '25px',
+        margin: '25px',
+        textAlign: 'center',
+    },
+    button: {
+        backgroundColor: '#9a3dal',
+        borderColor: '#9a3dal',
+        color: 'black',
+        borderRadius: '5px',
+        height: '4em',
+        width: '10em',
+        ':hover': {
+            backgroundColor: '#DB4A9D',
+            borderColor: '#DB4A9D'
+        }
+}
+}
 
 const Weather = (props) =>{
     // console.log(props); 
@@ -61,4 +85,4 @@ const Weather = (props) =>{
     );
 }
 
-export default Weather;
+export default Radium(Weather);
