@@ -1,40 +1,40 @@
 import React, { useState } from "react";
 // import { Button } from "reactstrap";
- import ResultMaster from './ResultMaster'
+import ResultMaster from "./ResultMaster";
 
 const baseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?";
 const key = "7drYHlAFPDVkMAGRvyAmhdDlCUWyZzGv";
 
 function Ticketmaster(props) {
-  console.log(props);
   const [results, setResults] = useState([]);
-  //const [localStartDateTime, setLocalStartDateTime] = useState([]);
-  //const [localStartEndDateTime, setLocalStartEndDateTime] = useState([]);
+  const [localStartDateTime, setLocalStartDateTime] = useState([]);
+  const [localStartEndDateTime, setLocalStartEndDateTime] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [search, setSearch] = useState("");
- // const [text, setText] = useState()
+  // const [text, setText] = useState()
 
   const lat = localStorage.getItem("lat");
   const long = localStorage.getItem("long");
   console.log("tm", lat, long);
 
-  let apiUrl = `${baseUrl}lat=${lat}&lon=${long}&apikey=${key}`;
+  // let apiUrl = `${baseUrl}lat=${lat}&lon=${long}&apikey=${key}`;
 
-  console.log(apiUrl);
+  // console.log(apiUrl);
 
   let fetchResults = () => {
-    let url=`${baseUrl}&latlong=${lat},${long}&radius=25&unit=miles&locale=*&size=10&page=${pageNumber}&sort=date,asc&apikey=${key}`
-
+    let url = `${baseUrl}&latlong=${lat},${long}&radius=25&unit=miles&locale=*&size=10&sort=date,asc&apikey=${key}`;
+    console.log(url);
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setResults(data.response.docs))
+      .then((response) => setResults(response))
       .catch((err) => console.log(err));
   };
+  console.log("tmresults", results);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setPageNumber(0);
-    console.log('clicking');
+    console.log("clicking");
     fetchResults();
   };
 
@@ -56,23 +56,38 @@ function Ticketmaster(props) {
     <div>
       {/* <input  onChange={(e) => handleSubmit(e)} /> */}
       <span>Get Your Tickets Here (required):</span>
-      <input type="text" name="search" onChange={(e) => setSearch(e.target.value)} required/>
+      <input
+        type="text"
+        name="search"
+        onChange={(e) => setSearch(e.target.value)}
+        required
+      />
       <br />
       <span>Start Date:</span>
-      <input type="date" name="startDate" pattern="[0-9]{8}" onChange={(e) => setLocalStartDateTime(e.target.value)}/>
+      <input
+        type="date"
+        name="startDate"
+        pattern="[0-9]{8}"
+        onChange={(e) => setLocalStartDateTime(e.target.value)}
+      />
       <br />
       <span>End Date: </span>
-      <input type="date" name="endDate" pattern="[0-9]{8}" onChange={(e) => setLocalStartEndDateTime(e.target.value)}/>
+      <input
+        type="date"
+        name="endDate"
+        pattern="[0-9]{8}"
+        onChange={(e) => setLocalStartEndDateTime(e.target.value)}
+      />
       <br />
-      <button className="submit" onChange={(e) => handleSubmit(e)}>Let's PARTY!</button>
+      <button className="submit" onClick={(e) => handleSubmit(e)}>
+        Let's PARTY!
+      </button>
+      <ResultMaster results={results} />
     </div>
-   ); 
+  );
 }
-  
+
 export default Ticketmaster;
-
-
-
 
 // if (localStartDateTime.value !== '')
 // console.log(localStartDateTime.value);
