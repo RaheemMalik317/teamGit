@@ -6,6 +6,7 @@ import Radium from 'radium';
 
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
 const apiKey = '7a58d9b61109b78f87f3ebf6c6e68e0a';
+const apiKey2 = '728d62266f51e8dc10c7e2b60337e3eb';
 
 const styles = {
     weather: {
@@ -44,7 +45,7 @@ const Weather = (props) =>{
     // let tempMax= "";
 
     const fetchWeather = () => {
-        let apiURL = `${baseUrl}lat=${lat}&lon=${long}&appid=${apiKey}&units=`;
+        let apiURL = `${baseUrl}lat=${lat}&lon=${long}&appid=${apiKey2}&units=`;
         apiURL = metric ? apiURL +`metric`: apiURL + `imperial` ;
         console.log('weather url', apiURL);
         fetch(apiURL)
@@ -61,7 +62,7 @@ const Weather = (props) =>{
     let tempMin = results.main === undefined ? "unable to get data": results.main.temp_min
     let tempMax= results.main === undefined ? "unable to get data" :results.main.temp_max
 
-    let tempType = metric? 'F' : 'C'
+    let tempType = metric? 'C' : 'F'
 
     return (
         <div>
