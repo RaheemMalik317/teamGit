@@ -1,11 +1,12 @@
 import WeatherDisplay from '../Weather/WeatherDisplay';
+import Weather from '../Weather/Weather';
 import Nasa from '../Nasa/Nasa';
 import Ticketmaster from '../Ticketmaster/Ticketmaster';
 
 function DisplayArea() {
     return (
         <div>
-            <WeatherDisplay/>
+            <Weather/>
             <Ticketmaster />
         </div>
     );
