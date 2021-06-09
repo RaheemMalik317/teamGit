@@ -1,8 +1,14 @@
-function Footer() {
+import {Row} from 'reactstrap'
+
+
+
+const Footer=() => {
     return (
-        <div >
-        
-        </div>
+        <footer>
+            <Row>
+                <p>&copy;Made By: Raheem G, Jessica W, Hope, Faith Eleven Fifty 2021</p>
+            </Row>
+        </footer>
     );
 }
 
